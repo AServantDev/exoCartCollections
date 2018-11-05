@@ -18,6 +18,7 @@ public class Cart {
 
 		Produits prod = new Produits();
 		List<Produit> products = prod.getProducts();
+		
 		return products.get(pid);
 
 	};
@@ -31,6 +32,7 @@ public class Cart {
 		} else {
 
 			cartItem.add(product);
+			product.setStock(product.getStock() -1);
 
 		}
 
@@ -40,16 +42,11 @@ public class Cart {
 
 	public void removeProductByPID(int pid) {
 
-		if (cartItem.contains(pid)) {
+		
 
-			cartItem.remove(pid);
+			cartItem.remove(pid);}
 
-		} else {
-
-			System.out.println("Product with ID " + pid + " is not Found.");
-
-		}
-	};
+		
 
 	void printCartItems() {
 

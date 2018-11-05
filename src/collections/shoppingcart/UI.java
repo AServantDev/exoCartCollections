@@ -50,7 +50,7 @@ public class UI {
 			break;
 		case 2:
 			System.out.println("Which Stand do you want to remove to your cart?");
-			showCart();
+			removeProductFromCart();
 			break;
 		}
 	}
@@ -87,24 +87,20 @@ public class UI {
 	private void displayStoreProducts() {
 
 		Produits produits = new Produits();
-		
-		
+
 		ListIterator<Produit> iterator = produits.getProducts().listIterator();
-		while(iterator.hasNext()) {
+		while (iterator.hasNext()) {
 			System.out.println(iterator.next());
 		}
-
-		
 
 	};
 
 	private void addProductToCart() {
 
 		displayStoreProducts();
-		
-		
+
 		cart.addProductToCartByPID(getUserInput());
-		
+
 		System.out.println("1. Display Store Products");
 		System.out.println("2. Display Cart");
 		System.out.println("0. Exit");
@@ -126,7 +122,6 @@ public class UI {
 
 	private void showCart() {
 
-		
 		cart.printCartItems();
 //		List<Object> myCart = new ArrayList<Object>();
 //		Iterator<Object> iterator = myCart.iterator();
@@ -136,7 +131,11 @@ public class UI {
 	};
 
 	private void removeProductFromCart() {
+		showCart();
 
+		cart.removeProductByPID(getUserInput());
+		System.out.println("Stand retiré, mort du stand master...");
+		menu();
 	};
 
 }
